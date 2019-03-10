@@ -25,12 +25,15 @@ public class partition {
 
     //loop through ints from start to end
     int i1 = start+1; // last index of a number smaller than pivot.
-    int i2 = end-1;
+    int i2 = end;
     while (i2 > i1) {
+      System.out.println(i1+", "+i2);
       System.out.println(Arrays.toString(data));
+
       if (data[i1] >= pivot) {
         int temp = data[i1];
         //move the larger value to end of array (swap)
+        System.out.println("swapping "+data[i1]+" with "+data[i2]);
         data[i1] = data[i2];
         data[i2] = temp;
         i2--;
@@ -41,6 +44,7 @@ public class partition {
         i1++;
       }
     }
+    System.out.println(Arrays.toString(data));
 
 
 
@@ -49,8 +53,10 @@ public class partition {
   }
 
   public static void main(String[] args) {
-    int[] data = {1,7,4,2,3,6,5};
+    int[] data = {1,7,4,2,3,6,5,4,2,7,5};
+    //for (int i=0;i<10;i++) {
+      partition(data,0,10);
 
-    partition(data,0,6);
+    //}
   }
 }
