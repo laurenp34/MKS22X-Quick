@@ -27,8 +27,8 @@ public class partition {
     int i1 = start+1; // last index of a number smaller than pivot.
     int i2 = end;
     while (i2 > i1) {
-      System.out.println(i1+", "+i2);
-      System.out.println(Arrays.toString(data));
+    //  System.out.println(i1+", "+i2);
+    //  System.out.println(Arrays.toString(data));
 
       if (data[i1] >= pivot) {
         int temp = data[i1];
@@ -37,7 +37,8 @@ public class partition {
         data[i1] = data[i2];
         data[i2] = temp;
         i2--;
-      } else if (data[i2] >= pivot) {
+      }
+      if (data[i2] >= pivot) {
         i2--;
       }
       if (data[i1] < pivot) {
