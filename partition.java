@@ -11,8 +11,14 @@ public class partition {
   public static int partition ( int [] data, int start, int end){
 
     //generate random index (0-length)
-    int pIdx = (int) (Math.random() * data.length);
+    int pIdx = (int) (Math.random() * (end - start + 1)) + start;
     System.out.println(pIdx);
+    int pivot = data[pIdx];
+
+    //place pivot at beginning, swap.
+
+
+
 
     return 0;
   }
@@ -21,7 +27,7 @@ public class partition {
     int[] data = {1,2,3,4,5,6,7};
 
     for (int i=0;i<20;i++) {
-      partition(data,0,0);
+      partition(data,2,5);
     }
   }
 }
