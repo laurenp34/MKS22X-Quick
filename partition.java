@@ -33,24 +33,33 @@ public class partition {
       if (data[i1] >= pivot) {
         int temp = data[i1];
         //move the larger value to end of array (swap)
-        System.out.println("swapping "+data[i1]+" with "+data[i2]);
+        //System.out.println("swapping "+data[i1]+" with "+data[i2]);
         data[i1] = data[i2];
         data[i2] = temp;
         i2--;
       }
+      //if data[i2] is proper, increment i2
       if (data[i2] >= pivot) {
         i2--;
       }
+      //if data[i1] is proper increment it.
       if (data[i1] < pivot) {
         i1++;
       }
     }
     System.out.println(Arrays.toString(data));
+    System.out.println(i1);
+    System.out.println(i2);
+
+    //now loop through data to place pivot.
+    int temp = data[i2]; // data[i2] is the last value smaller than pivot. swap it with pivot.
+    data[start] = temp;
+    data[i2] = pivot;
 
 
 
 
-    return 0;
+    return i2;
   }
 
   public static void main(String[] args) {
