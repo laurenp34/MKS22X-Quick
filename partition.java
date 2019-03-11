@@ -13,7 +13,7 @@ public class partition {
 */
   public static int partition ( int[] data, int start, int end){
 
-    //generate random index (0-length)
+    //generate random index (0-length)nt
     int pIdx = (int) (Math.random() * (end - start + 1)) + start;
     //System.out.println(pIdx);
     int pivot = data[pIdx];
@@ -39,7 +39,7 @@ public class partition {
         i2--;
       }
       //if data[i2] is proper, increment i2
-      if (data[i2] >= pivot) {
+      if (data[i2] >= pivot) {nt
         i2--;
       }
       //if data[i1] is proper increment it.
@@ -57,9 +57,18 @@ public class partition {
     data[i2] = pivot;
 
 
-
-
     return i2;
+  }
+
+  /*return the value that is the kth smallest value of the array.
+*/
+  public static int quickselect(int[] data, int k){
+    int pivot = partition(data,0,data.length-1);
+    if (pivot == k) return data[pivot];
+
+    if (pivot < k) return quickSelect(Arrays.copyOfRange(array, 0, pivot));
+
+    else return quickSelect(Arrays.copyOfRange(array,pivot+1,))
   }
 
   public static void main(String[] args) {
