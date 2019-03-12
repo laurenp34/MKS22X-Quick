@@ -39,7 +39,7 @@ public class partition {
         i2--;
       }
       //if data[i2] is proper, increment i2
-      if (data[i2] >= pivot) {nt
+      if (data[i2] >= pivot) {
         i2--;
       }
       //if data[i1] is proper increment it.
@@ -48,8 +48,8 @@ public class partition {
       }
     }
     System.out.println(Arrays.toString(data));
-    System.out.println(i1);
-    System.out.println(i2);
+    //System.out.println(i1);
+    System.out.println("pivot: "+i2);
 
     //now loop through data to place pivot.
     int temp = data[i2]; // data[i2] is the last value smaller than pivot. swap it with pivot.
@@ -62,19 +62,23 @@ public class partition {
 
   /*return the value that is the kth smallest value of the array.
 */
-  public static int quickselect(int[] data, int k){
+  public static int quickSelect(int[] data, int k){
     int pivot = partition(data,0,data.length-1);
-    if (pivot == k) return data[pivot];
+    for (int i=0;i<data.length;i++) {
 
-    if (pivot < k) return quickSelect(Arrays.copyOfRange(array, 0, pivot));
+      if (pivot == k) return data[pivot];
 
-    else return quickSelect(Arrays.copyOfRange(array,pivot+1,))
+      if (pivot < k) partition(data,pivot+1,data.length-1);
+
+      if (pivot > k) partition(data,0,pivot-1);
+    }
+    return -1;
   }
 
   public static void main(String[] args) {
-    int[] data = {1,7,4,2,3,6,5,4,2,7,5};
+    int[] data = {100,99,98,4,2,7};
     //for (int i=0;i<10;i++) {
-      partition(data,0,10);
+      System.out.println(quickSelect(data,1));
 
     //}
   }
