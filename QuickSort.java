@@ -59,7 +59,7 @@ public class QuickSort {
       if (pivot < data[i]) {
         int temp = data[i-1];
         data[i-1] = pivot;
-        data[0] = temp;
+        data[start] = temp;
         idx = i-1;
         System.out.println("value: "+pivot);
         System.out.println("index: "+(idx));System.out.println(Arrays.toString(data)+"\n");
@@ -81,16 +81,18 @@ public class QuickSort {
   /*return the value that is the kth smallest value of the array.
 */
   public static int quickSelect(int[] data, int k){
+    System.out.println("Finding element "+k);
     int pivot = partition(data,0,data.length-1);
     for (int i=0;i<data.length;i++) {
       System.out.println("pivot: "+pivot);
       System.out.println(Arrays.toString(data));
+      int temp = pivot;
 
       if (pivot == k) return data[pivot];
 
-      if (pivot < k) partition(data,pivot+1,data.length-1);
+      if (pivot < k) pivot = partition(data,temp+1,data.length-1);
 
-      if (pivot > k) partition(data,0,pivot-1);
+      if (pivot > k) pivot = partition(data,0,temp-1);
     }
     return -1;
   }
@@ -99,7 +101,7 @@ public class QuickSort {
     int[] data = {100,99,98,4,2,7};
     //for (int i=0;i<10;i++) {
     for (int i=0;i<10;i++)
-      partition(data,0,5);
+      System.out.println("QUICKSELECT: "+quickSelect(data,3));
 
     //}
   }
