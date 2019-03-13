@@ -38,27 +38,44 @@ public class QuickSort {
         data[i2] = temp;
         i2--;
       }
+      /*
       //if data[i2] is proper, increment i2
       if (data[i2] >= pivot) {
         i2--;
-      }
+      }*/
       //if data[i1] is proper increment it.
       if (data[i1] < pivot) {
         i1++;
       }
+
     }
     //System.out.println(Arrays.toString(data));
     //System.out.println(i1);
     //System.out.println("pivot: "+i2);
 
     //now loop through data to place pivot.
+    int idx = 0;
+    for (int i=start+1;i<=end;i++) {
+      if (pivot < data[i]) {
+        int temp = data[i-1];
+        data[i-1] = pivot;
+        data[0] = temp;
+        idx = i-1;
+        System.out.println("value: "+pivot);
+        System.out.println("index: "+(idx));System.out.println(Arrays.toString(data)+"\n");
+        return idx;
+
+      }
+    }
+    /*
     int temp = data[i2-1]; // data[i2] is the last value smaller than pivot. swap it with pivot.
     data[start] = temp;
     data[i2-1] = pivot;
+    */
 
     System.out.println("value: "+pivot);
-    System.out.println("index: "+i2);System.out.println(Arrays.toString(data)+"\n");
-    return i2-1;
+    System.out.println("index: "+(idx));System.out.println(Arrays.toString(data)+"\n");
+    return idx;
   }
 
   /*return the value that is the kth smallest value of the array.
