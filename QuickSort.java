@@ -38,6 +38,11 @@ public class QuickSort {
         swap(data,i2,i1);
         i2--;
       }
+      if (data[i1] == pivot) {
+        Random r = new Random();
+        int move = r.nextInt(2);
+        System.out.println(move);
+      }
       /*
       //if data[i2] is proper, increment i2
       /*
@@ -182,6 +187,12 @@ public class QuickSort {
       System.out.println(partition(data,0,5));
     }
     */
+
+    for (int i=0;i<10;i++) {
+      Random r = new Random();
+      int move = r.nextInt(2);
+      System.out.println(move);
+    }
     quicksort(data);
     System.out.println(Arrays.toString(data));
     //System.out.println(quickSelect(data,3));
