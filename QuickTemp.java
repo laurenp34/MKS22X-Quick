@@ -31,8 +31,8 @@ public class QuickTemp {
     int i1 = start+1; // last index of a number smaller than pivot.
     int i2 = end;
     while (i2 >= i1) {
-      System.out.println("\n"+i1+", "+i2);
-      System.out.println(Arrays.toString(data));
+      //System.out.println("\n"+i1+", "+i2);
+      //System.out.println(Arrays.toString(data));
 
       if (data[i1] >= pivot) {
         swap(data,i2,i1);
@@ -59,7 +59,7 @@ public class QuickTemp {
     int idx = end;
     for (int i=start+1;i<=end;i++) {
       if (pivot < data[i]) {
-        System.out.println("i: "+i);
+        //System.out.println("i: "+i);
 
         idx = i-1;
         i = end+1;
