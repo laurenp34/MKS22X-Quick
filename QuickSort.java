@@ -34,14 +34,22 @@ public class QuickSort {
       //System.out.println("\n"+i1+", "+i2);
       //System.out.println(Arrays.toString(data));
 
-      if (data[i1] >= pivot) {
+      if (data[i1] > pivot) {
         swap(data,i2,i1);
         i2--;
       }
       if (data[i1] == pivot) {
+        //generating random int 0 or 1.
         Random r = new Random();
         int move = r.nextInt(2);
         System.out.println(move);
+
+        if (move == 0) { //keep at front
+            i1++;
+        } else {
+          swap(data,i2,i1);
+          i2--;
+        }
       }
       /*
       //if data[i2] is proper, increment i2
@@ -96,30 +104,31 @@ public class QuickSort {
 
   }
   swap(data,start,idx);
-  System.out.println("value: "+pivot);
-  System.out.println("index: "+(idx));System.out.println(Arrays.toString(data)+"\n");
+  //System.out.println("value: "+pivot);
+  //System.out.println("index: "+(idx));System.out.println(Arrays.toString(data)+"\n");
   return idx;
 }
 
   /*return the value that is the kth smallest value of the array.
 */
   public static int quickselect(int[] data, int k){
-    System.out.println("Finding element "+k);
+    //System.out.println("Finding element "+k);
     int pivot = partition(data,0,data.length-1);
     int temp = pivot;
     int lastS = 0;
     int lastE = data.length-1;
     for (int i=0;i<data.length;i++) {
 
-      temp = pivot;
+      //temp = pivot;
 
-
+      /*
       System.out.println("pivot: "+pivot);
       System.out.println("\ttemp: "+temp);
       System.out.println(Arrays.toString(data));
+      */
       //temp = pivot;
 
-      System.out.println("BETWEEN "+lastS+", "+lastE);
+      //System.out.println("BETWEEN "+lastS+", "+lastE);
       if (pivot == k) return data[pivot];
 
       if (lastS == lastE) return data[pivot];
@@ -132,18 +141,18 @@ public class QuickSort {
       }*/
 
       if (pivot < k) {
-        System.out.println("Checking between "+(temp+1)+", "+lastE);
-        if ((temp+1) == lastE) return data[lastE];
-        lastS = temp+1;
-        pivot = partition(data,temp+1,lastE);
+        //System.out.println("Checking between "+(temp+1)+", "+lastE);
+        if ((pivot+1) == lastE) return data[lastE];
+        lastS = pivot+1;
+        pivot = partition(data,pivot+1,lastE);
       }
 
       if (pivot > k) {
-        System.out.println("\n\tpivot: "+pivot);
-        System.out.println("checking between "+lastS+", "+(pivot-1));
+        //System.out.println("\n\tpivot: "+pivot);
+        //System.out.println("checking between "+lastS+", "+(pivot-1));
         if ((pivot-1) == lastS) return data[lastS];
-        lastE = temp-1;
-        pivot = partition(data,lastS,temp-1);
+        lastE = pivot-1;
+        pivot = partition(data,lastS,pivot-1);
       }
 
     }
@@ -187,7 +196,7 @@ public class QuickSort {
       System.out.println(partition(data,0,5));
     }
     */
-
+/*
     for (int i=0;i<10;i++) {
       Random r = new Random();
       int move = r.nextInt(2);
@@ -195,10 +204,11 @@ public class QuickSort {
     }
     quicksort(data);
     System.out.println(Arrays.toString(data));
+    */
     //System.out.println(quickSelect(data,3));
       //System.out.println("QUICKSELECT: "+quickSelect(data,3));
 
-      //quickSelect(data,3);
+      System.out.println(quickselect(data,3));
 
     //}
 
