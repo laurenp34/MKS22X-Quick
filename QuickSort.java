@@ -128,6 +128,7 @@ public class QuickSort {
 
       if (pivot < k) {
         System.out.println("Checking between "+(temp+1)+", "+lastE);
+        if ((temp+1) == lastE) return data[lastE];
         lastS = temp+1;
         pivot = partition(data,temp+1,lastE);
       }
@@ -135,6 +136,7 @@ public class QuickSort {
       if (pivot > k) {
         System.out.println("\n\tpivot: "+pivot);
         System.out.println("checking between "+lastS+", "+(pivot-1));
+        if ((pivot-1) == lastS) return data[lastS];
         lastE = temp-1;
         pivot = partition(data,lastS,temp-1);
       }
@@ -150,11 +152,11 @@ public class QuickSort {
       System.out.println(partition(data,0,5));
     }
     */
-    //System.out.println(partition(data,3,5));
+    System.out.println(partition(data,1,3));
     //System.out.println(quickSelect(data,3));
       //System.out.println("QUICKSELECT: "+quickSelect(data,3));
 
-      quickSelect(data,3);
+      //quickSelect(data,3);
 
     //}
 
