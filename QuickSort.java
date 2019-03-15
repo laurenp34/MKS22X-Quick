@@ -114,7 +114,7 @@ public class QuickSort {
   public static int quickselect(int[] data, int k){
     //System.out.println("Finding element "+k);
     int pivot = partition(data,0,data.length-1);
-    int temp = pivot;
+    //int temp = pivot;
     int lastS = 0;
     int lastE = data.length-1;
     for (int i=0;i<data.length;i++) {
