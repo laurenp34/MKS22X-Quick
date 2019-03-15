@@ -1,7 +1,7 @@
 import java.io.*;
 import java.util.*;
 
-public class QuickTemp {
+public class QuickSort {
 
   private static void swap(int[] data, int i1, int i2) {
     int temp = data[i1];
@@ -74,7 +74,6 @@ public class QuickTemp {
         data[start] = temp;
         i = end+1; // break out of loop.
         return i-1;
-
       }
     }
     */
@@ -98,44 +97,96 @@ public class QuickTemp {
 
   /*return the value that is the kth smallest value of the array.
 */
-  public static int quickSelect(int[] data, int k){
+  public static int quickselect(int[] data, int k){
     System.out.println("Finding element "+k);
     int pivot = partition(data,0,data.length-1);
+    int temp = pivot;
+    int lastS = 0;
+    int lastE = data.length-1;
     for (int i=0;i<data.length;i++) {
-      int temp = pivot;
-      System.out.println("pivot: "+pivot);
-      System.out.println(Arrays.toString(data));
+
       temp = pivot;
 
+
+      System.out.println("pivot: "+pivot);
+      System.out.println("\ttemp: "+temp);
+      System.out.println(Arrays.toString(data));
+      //temp = pivot;
+
+      System.out.println("BETWEEN "+lastS+", "+lastE);
       if (pivot == k) return data[pivot];
+
+      if (lastS == lastE) return data[pivot];
 
 
       //if (pivot < k) pivot = partition(data,temp+1,data.length-1);
-
-      if (pivot > k) pivot = partition(data,0,temp-1);
+      /*
+      if (pivot > k) {
+        pivot = partition(data,0,temp-1);
+      }*/
 
       if (pivot < k) {
-        System.out.println("checking between "+(temp+1)+", "+(data.length-1));
-        pivot = partition(data,temp+1,data.length-1);
+        System.out.println("Checking between "+(temp+1)+", "+lastE);
+        if ((temp+1) == lastE) return data[lastE];
+        lastS = temp+1;
+        pivot = partition(data,temp+1,lastE);
       }
 
       if (pivot > k) {
-        System.out.println("checking between 0, "+(temp-1));
-        pivot = partition(data,0,temp-1);
+        System.out.println("\n\tpivot: "+pivot);
+        System.out.println("checking between "+lastS+", "+(pivot-1));
+        if ((pivot-1) == lastS) return data[lastS];
+        lastE = temp-1;
+        pivot = partition(data,lastS,temp-1);
       }
 
     }
     return -1;
   }
 
+   public static void quicksort(int[] data) {
+     int pivot = partition(data,0,data.length-1);
+     if (pivot == 0) {
+       quicksort(data,pivot+1,data.length-1);
+     } else if (pivot == data.length-1) {
+       quicksort(data,0,pivot-1);
+     } else {
+       quicksort(data,0,pivot-1); // exclude pivot because it's already sorted.
+       quicksort(data,pivot+1,data.length-1);
+     }
+
+     //int p2 = partition(data,(data.length/2),data.length-1);
+
+
+   }
+
+   public static void quicksort(int[] data, int i1, int i2) {
+     if (i1 == i2) return;
+     int pivot = partition(data,i1,i2);
+
+     if (pivot == i1) {
+       quicksort(data,pivot+1,i2);
+     } else if (pivot == i2) {
+       quicksort(data,i1,pivot-1);
+     } else {
+       quicksort(data,i1,pivot-1);
+       quicksort(data,pivot+1,i2);
+     }
+   }
+
   public static void main(String[] args) {
     int[] data = {100,99,98,4,2,7};
+    /*
     for (int i=0;i<10;i++) {
       System.out.println(partition(data,0,5));
     }
+    */
+    quicksort(data);
+    System.out.println(Arrays.toString(data));
+    //System.out.println(quickSelect(data,3));
       //System.out.println("QUICKSELECT: "+quickSelect(data,3));
 
-    //  quickSelect(data,3);
+      //quickSelect(data,3);
 
     //}
 
