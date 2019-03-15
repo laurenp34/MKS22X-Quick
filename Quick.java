@@ -30,7 +30,7 @@ public class Quick {
     //loop through ints from start to end
     int i1 = start+1; // last index of a number smaller than pivot.
     int i2 = end;
-    while (i2 >= i1) {
+    while (i2 > i1) {
       //System.out.println("\n"+i1+", "+i2);
       //System.out.println(Arrays.toString(data));
 
@@ -42,7 +42,7 @@ public class Quick {
         //generating random int 0 or 1.
         Random r = new Random();
         int move = r.nextInt(2);
-        System.out.println(move);
+        //System.out.println(move);
 
         if (move == 0) { //keep at front
             i1++;
@@ -64,11 +64,19 @@ public class Quick {
       }
 
     }
+    if (pivot > data[i1]) {
+      swap(data,i1,start);
+      return i1;
+    } else {
+      swap(data,i1-1,start);
+      return i1-1;
+    }
     //System.out.println(Arrays.toString(data));
     //System.out.println(i1);
     //System.out.println("pivot: "+i2);
 
     //now loop through data to place pivot.
+    /*
     int idx = end;
     for (int i=start+1;i<=end;i++) {
       if (pivot < data[i]) {
@@ -100,13 +108,14 @@ public class Quick {
     System.out.println("index: "+i2);
     System.out.println(Arrays.toString(data)+"\n");
     return i2-1;
-    */
 
-  }
-  swap(data,start,idx);
+
+  }*/
+
+  //swap(data,start,idx);
   //System.out.println("value: "+pivot);
   //System.out.println("index: "+(idx));System.out.println(Arrays.toString(data)+"\n");
-  return idx;
+  //return idx;
 }
 
   /*return the value that is the kth smallest value of the array.
