@@ -18,10 +18,27 @@ public class Quick {
 */
   public static int partition ( int[] data, int start, int end){
 
-    //generate random index (0-length)nt
+    //generate random index (0-length)
+
+
+    int lo = data[start];
+    int hi = data[end];
+    int mid  = data[(end-start)/2];
+    int[] vals = {lo,hi,mid};
+
+    Arrays.sort(vals);
+    int pivot = vals[1];
+    int pIdx = 0;
+    
+    if (pivot == lo) pIdx = start;
+    else if (pivot == hi) pIdx = end;
+    else if (pivot == mid) pIdx = ((end-start)/2);
+
+
+    /*
     int pIdx = (int) (Math.random() * (end - start + 1)) + start;
     //System.out.println(pIdx);
-    int pivot = data[pIdx];
+    int pivot = data[pIdx]; */
     //System.out.println(pivot);
 
     //place pivot at beginning, swap.
