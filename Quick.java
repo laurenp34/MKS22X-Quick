@@ -51,6 +51,9 @@ public class Quick {
     //loop through ints from start to end
     int i1 = start+1; // last index of a number smaller than pivot.
     int i2 = end;
+
+    int dup = 0;
+
     while (i2 > i1) {
       //System.out.println("\n"+i1+", "+i2);
       //System.out.println(Arrays.toString(data));
@@ -61,15 +64,19 @@ public class Quick {
       }
       if (data[i1] == pivot) {
         //generating random int 0 or 1.
+        /*
         Random r = new Random();
         int move = r.nextInt(2);
+        */
         //System.out.println(move);
 
-        if (move == 0) { //keep at front
+        if (dup == 0) { //keep at front
             i1++;
+            dup ++;
         } else {
           swap(data,i2,i1);
           i2--;
+          dup = 0;
         }
       }
       /*
