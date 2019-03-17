@@ -24,15 +24,19 @@ public class Quick {
     int lo = data[start];
     int hi = data[end];
     int mid  = data[(end-start)/2];
+
     int[] vals = {lo,hi,mid};
 
     Arrays.sort(vals);
     int pivot = vals[1];
     int pIdx = 0;
-    
+
     if (pivot == lo) pIdx = start;
     else if (pivot == hi) pIdx = end;
     else if (pivot == mid) pIdx = ((end-start)/2);
+
+    //System.out.println(Arrays.toString(data));
+    //System.out.println("pivot: "+pivot+" IDX: "+pIdx);
 
 
     /*
@@ -216,12 +220,12 @@ public class Quick {
    }
 
   public static void main(String[] args) {
-    //int[] data = {100,99,98,4,2,7};
-    /*
+    int[] data = {100,99,98,4,2,7};
+/*
     for (int i=0;i<10;i++) {
       System.out.println(partition(data,0,5));
-    }
-    */
+    }*/
+
 /*
     for (int i=0;i<10;i++) {
       Random r = new Random();
