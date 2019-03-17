@@ -146,6 +146,59 @@ public class Quick {
   //return idx;
 }
 
+  private static int[] partitionDutch(int[] data, int start, int end){
+    //your code
+
+    //generating pivot point based on first,middle,last element's median.
+    int low = data[start];
+    int hig = data[end];
+    int mid  = data[(end-start)/2];
+
+    int[] vals = {low,hig,mid};
+
+    Arrays.sort(vals);
+    int pivot = vals[1];
+    int pIdx = 0;
+
+    if (pivot == low) pIdx = start;
+    else if (pivot == hig) pIdx = end;
+    else if (pivot == mid) pIdx = ((end-start)/2);
+
+    swap(data,start,pIdx);
+    int i=start+1; // current index.
+    int gt = end; // first index of greater values
+    int lt = start; // last index of smaller values
+
+    while (gt > i) {
+
+      //if current is greater than pivot,
+      if (data[i] > pivot) {
+        swap(data,i,gt-1);
+        gt--;
+
+      }
+      //if current is less than pivot, swap current for first duplicate.
+      if (data[i] < pivot) {
+        if (i == lt+1) { // means that there have been no duplicates yet
+          i++;
+          lt++;
+        } else {
+          swap(data,i,lt+1);
+          lt++;
+          i++;
+        }
+      }
+      //if current is equal to pivot, just increment i.
+      if (data[i] == pivot) i++;
+
+    }
+
+    System.out.println(Arrays.toString(data));
+
+    return data;
+    //return an array [lt,gt]
+}
+
   /*return the value that is the kth smallest value of the array.
 */
   public static int quickselect(int[] data, int k){
@@ -227,7 +280,8 @@ public class Quick {
    }
 
   public static void main(String[] args) {
-    int[] data = {100,99,98,4,2,7};
+    int[] data = {100,98,99,98,98,4,2,98,7,98};
+    partitionDutch(data,0,data.length-1);
 /*
     for (int i=0;i<10;i++) {
       System.out.println(partition(data,0,5));
