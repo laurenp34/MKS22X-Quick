@@ -189,7 +189,7 @@ public class Quick {
         }
       }
       //if current is equal to pivot, just increment i.
-      if (data[i] == pivot) i++;
+      if (i < data.length && data[i] == pivot) i++;
 
     }
 
@@ -282,10 +282,10 @@ public class Quick {
   }
 
   public static void dutchSort(int[] data, int i1, int i2) {
-    System.out.println(Arrays.toString(data)+"\t"+i1+"\t"+i2);
-    if (i1 == i2) return;
+    //System.out.println(Arrays.toString(data)+"\t"+i1+"\t"+i2);
+    if (i1 >= i2) return;
     int[] pivots = partitionDutch(data,i1,i2);
-    System.out.println("pivots: "+Arrays.toString(pivots)+"\n");
+    //System.out.println("pivots: "+Arrays.toString(pivots)+"\n");
     int p1 = pivots[0];
     int p2 = pivots[1];
 
@@ -334,12 +334,14 @@ public class Quick {
    }
 
   public static void main(String[] args) {
+    /*
     int[] d = {2,7,4};
     System.out.println(Arrays.toString(partitionDutch(d,0,2)));
-    System.out.println(Arrays.toString(d));
-    int[] data = {100,98,99,98,98,4,2,98,7,98};
+    System.out.println(Arrays.toString(d));*/
+    int[] data = {100,98,99,98,98,4,2,98,7,98,5,3,99,600,3,5,8,98,0};
     dutchSort(data);
     System.out.println(Arrays.toString(data));
+
 /*
     for (int i=0;i<10;i++) {
       System.out.println(partition(data,0,5));
