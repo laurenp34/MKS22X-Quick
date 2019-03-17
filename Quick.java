@@ -193,9 +193,18 @@ public class Quick {
 
     }
 
-    System.out.println(Arrays.toString(data));
 
-    return data;
+
+
+    int[] result = {lt-1,gt};
+    swap(data,start,lt);
+
+System.out.println(Arrays.toString(data));
+    System.out.println(Arrays.toString(result));
+
+
+
+    return result;
     //return an array [lt,gt]
 }
 
