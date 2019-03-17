@@ -199,8 +199,8 @@ public class Quick {
     int[] result = {lt-1,gt};
     swap(data,start,lt);
 
-System.out.println(Arrays.toString(data));
-    System.out.println(Arrays.toString(result));
+    //System.out.println(Arrays.toString(data));
+    //System.out.println(Arrays.toString(result));
 
 
 
@@ -258,6 +258,32 @@ System.out.println(Arrays.toString(data));
     return -1;
   }
 
+  public static void dutchSort(int[] data) {
+    int[] pivots = partitionDutch(data,0,data.length-1);
+    dutchSort(data,0,pivots[0]);
+    dutchSort(data,pivots[1],data.length);
+  }
+
+  public static void dutchSort(int[] data, int i1, int i2) {
+    if (i1 == i2) return;
+    int[] pivots = partitionDutch(data,i1,i2);
+    int p1 = pivots[0];
+    int p2 = pivots[1];
+
+
+    if (p1 == i1 && p2 == i2) { // every value was a duplicate of pivot
+      return;
+    }
+    if (p1 == i1) { //no values smaller than pivot were found, so only partition greater values.
+      partitionDutch(data,p2,i2);
+    } else if (p2 == i2) { // no values greater than pivot were found, so only partition smaller values.
+      partitionDutch(data,i1,p1);
+    } else { // distribution.. so partition smaller values and greater values but not duplicates.
+      partitionDutch(data,i1,p1);
+      partitionDutch(data,p2,i2);
+    }
+  }
+
    public static void quicksort(int[] data) {
      int pivot = partition(data,0,data.length-1);
      if (pivot == 0) {
@@ -290,7 +316,7 @@ System.out.println(Arrays.toString(data));
 
   public static void main(String[] args) {
     int[] data = {100,98,99,98,98,4,2,98,7,98};
-    partitionDutch(data,0,data.length-1);
+    dutchSort(data);
 /*
     for (int i=0;i<10;i++) {
       System.out.println(partition(data,0,5));
