@@ -260,8 +260,19 @@ public class Quick {
 
   public static void dutchSort(int[] data) {
     int[] pivots = partitionDutch(data,0,data.length-1);
-    dutchSort(data,0,pivots[0]);
-    dutchSort(data,pivots[1],data.length);
+    int p1 = pivots[0];
+    int p2 = pivots[1];
+
+    if (p1 == 0 && p2 == data.length-1) return; //because every value was a duplicate of pivot.
+
+    if (p1 == 0) { //no values smaller than pivot were found, so only partition greater values.
+      partitionDutch(data,p2,data.length-1);
+    } else if (p2 == data.length-1) { // no values greater than pivot were found, so only partition smaller values.
+      partitionDutch(data,0,p1);
+    } else { // distribution.. so partition smaller values and greater values but not duplicates.
+      partitionDutch(data,0,p1);
+      partitionDutch(data,p2,data.length-1);
+    }
   }
 
   public static void dutchSort(int[] data, int i1, int i2) {
@@ -317,6 +328,7 @@ public class Quick {
   public static void main(String[] args) {
     int[] data = {100,98,99,98,98,4,2,98,7,98};
     dutchSort(data);
+    System.out.println(Arrays.toString(data));
 /*
     for (int i=0;i<10;i++) {
       System.out.println(partition(data,0,5));
