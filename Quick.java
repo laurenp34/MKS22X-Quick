@@ -264,7 +264,7 @@ public class Quick {
     return -1;
   }
 
-  public static void dutchSort(int[] data) {
+  public static void quicksort(int[] data) {
     int[] pivots = partitionDutch(data,0,data.length-1);
     int p1 = pivots[0];
     int p2 = pivots[1];
@@ -303,7 +303,7 @@ public class Quick {
     }
   }
 
-   public static void quicksort(int[] data) {
+   public static void slowsort(int[] data) {
      int pivot = partition(data,0,data.length-1);
      if (pivot == 0) {
        quicksort(data,pivot+1,data.length-1);
@@ -339,7 +339,7 @@ public class Quick {
     System.out.println(Arrays.toString(partitionDutch(d,0,2)));
     System.out.println(Arrays.toString(d));*/
     int[] data = {100,98,99,98,98,4,2,98,7,98,5,3,99,600,3,5,8,98,0};
-    dutchSort(data);
+    //dutchSort(data);
     System.out.println(Arrays.toString(data));
 
 /*
