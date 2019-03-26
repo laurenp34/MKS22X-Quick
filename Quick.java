@@ -265,6 +265,7 @@ public class Quick {
   }
 
   public static void quicksort(int[] data) {
+    if (data.length==0) return;
     int[] pivots = partitionDutch(data,0,data.length-1);
     int p1 = pivots[0];
     int p2 = pivots[1];
